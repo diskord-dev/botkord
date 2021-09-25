@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import List
 
 import json
+import sys
 import traceback
 
 import diskord
@@ -43,9 +44,14 @@ class BotKord(commands.Bot):
         print(f'Logged in as: {self.user.name}#{self.user.discriminator}')
 
 if __name__ == '__main__':
+    if '--overwrite-application-commands' in sys.argv:
+        overwrite_application_commands = True
+    else:
+        overwrite_application_commands = False
+
     bot = BotKord(
         command_prefix='!',
-        overwrite_application_commands=False,
+        overwrite_application_commands=overwrite_application_commands,
         intents=diskord.Intents.all()
         )
     bot.run()
