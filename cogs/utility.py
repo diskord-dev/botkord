@@ -27,7 +27,7 @@ class Utility(commands.Cog):
         """Quickly get link to a GitHub issue or a PR on repos of diskord-dev organization."""
         await ctx.send(f'https://github.com/diskord-dev/{repo}/issues/{id}', ephemeral=private)
 
-    @diskord.slash_command(guild_ids=[DKC_GUILD_ID])
+    @diskord.slash_command()
     async def getinfo(self, ctx: diskord.InteractionContext):
         """Get info about a user, guild or other entities."""
         pass
@@ -52,7 +52,7 @@ class Utility(commands.Cog):
 
         await ctx.send(embed=embed, ephemeral=private)
 
-    @diskord.slash_command(guild_ids=[DKC_GUILD_ID])
+    @diskord.slash_command()
     @diskord.slash_option('command', arg='command_name', description='The command to get info about.')
     @diskord.slash_option('private', description='Show help privately as ephemeral message.')
     async def help(self, ctx, command_name: str, private: bool = False):
